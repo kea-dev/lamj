@@ -1,12 +1,15 @@
 #!/bin/bash
 
-ECHO "#" $(gh repo view --json name  --jq '.name') > README-containers.md
-ECHO "[See it on GitHub]("$(gh repo view --json url  --jq '.url')")" >> README-containers.md
-ECHO $(gh repo view --json description --jq '.description') >> README-containers.md
-ECHO ### Dockerfile >> README-containers.md
-ECHO "\`\`\` docker" >> README-containers.md
-cat ./dockerfile >> README-containers.md
-ECHO "\`\`\`" >> README-containers.md
+cp   README.md README-containers.md
+echo "" >> README-containers.md
+echo "#" $(gh repo view --json name  --jq '.name') >> README-containers.md
+echo "[See it on GitHub]("$(gh repo view --json url  --jq '.url')")" >> README-containers.md
+echo $(gh repo view --json description --jq '.description') >> README-containers.md
+echo "" >> README-containers.md
+echo "### Dockerfile" >> README-containers.md
+echo "\`\`\` docker" >> README-containers.md
+cat  ./dockerfile >> README-containers.md
+echo "\`\`\`" >> README-containers.md
 
 docker buildx build --platform linux/amd64 -t lakruzz/lamj:latest --push .
 

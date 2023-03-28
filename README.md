@@ -24,17 +24,26 @@ This project installs Maven
 
 Run it like this:
 
-To build inside the container use
+### Mac/Linux
+
 ``` shell
-docker run -it  --rm  --pid=host -v $(pwd):/app:rw --workdir /app lakruzz/lamj /bin/bash
+docker run -it  --rm  --pid=host -v $(pwd):/app:rw --workdir /app lakruzz/lamj /usr/bin/env bash
 ```
 
-Or you can replace the `/bin/bash` with a valid Maven command to run the build from your host's terminal
+### Windows
 
-## Build and Deploy
+Command line terminal ..._not_  PowerShell
 
-Use the script `deploy` to build locally and pusgh to DockerHub
+``` shell
+docker run -it  --rm  --pid=host -v %cd%://app:rw --workdir //app lakruzz/lamj /usr/bin/env bash
+```
 
+Or you can replace the `bash` with a valid command to use som of the CLIs the container offer:
 
+- `gh`
+- `mvn`
+- `gradle`
+- `mysql`
+- `pscale`
 
 See it on Docker Hub [lakruzz/lamj](https://hub.docker.com/repository/docker/lakruzz/lamj)
