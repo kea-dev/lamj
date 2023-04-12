@@ -55,13 +55,12 @@ This image installs OpenJDK, Maven and Gradle
 
 Run it like this:
 
-The image is maintained in four tags
+The image is maintained in three tags
 
 - `amd64` same as `latest`
 - `arm64`
-- `armg6v8`
 
-On Mac with M1 Processors use `arm64`, with M2 processors use `arm64v8` . In most other contexts go with `amd64` or `latest`. If you don't specify anything you'll get `latest`.
+On Mac with M1 or M2 Processors use `arm64`. In most other contexts go with `amd64` or `latest`. If you don't specify anything you'll get `latest`.
 
 ### To run a bash shell - or any supported CLI - with your current working directory mapped in as `/app` 
 ``` shell
@@ -126,7 +125,7 @@ In your project:
    FROM lakruzz/lamj:latest
    
    RUN mkdir /app || true
-   COPY target/*.jar /app/
+   COPY target/*.jar /app
    
    COPY src/mysql/init/* /docker-entrypoint-initdb.d
    
@@ -149,3 +148,15 @@ In your project:
     -p 3306:3306 \
     -e MYSQL_ROOT_PASSWORD=mysecretpassword \
     myapp
+
+
+The container built this way is a single container (no docker compose needed) and can be hosted as a single instance _anywhere_:
+
+- [Top 10 Docker Hosting Platforms](https://blog.back4app.com/docker-hosting-platforms/)
+- [Best Docker Cloud Hosting](https://webhostingadvices.com/best-docker-cloud-hosting/)
+- [8 Best Docker Hosting Platforms for your Containers](https://geekflare.com/docker-hosting-platforms/)
+- [Best Docker Hosting Platforms of 2023](https://digital.com/best-web-hosting/docker/)
+
+## Example:
+
+Have a look at this sample project [lakruzz/SuperheltV5](https://github.com/lakruzz/SuperheltV5).
