@@ -11,6 +11,7 @@ echo "\`\`\` docker" >> README-containers.md
 cat  ./dockerfile >> README-containers.md
 echo "\`\`\`" >> README-containers.md
 
-docker buildx build --platform linux/amd64 -t lakruzz/lamj:latest --push .
+docker buildx build --build-arg PSCALE_ARCH=arm64 --platform linux/arm64 -t lakruzz/lamj:arm64 --push .
+docker buildx build --build-arg PSCALE_ARCH=amd64 --platform linux/amd64 -t lakruzz/lamj:amd64 -t lakruzz/lamj:latest --push .
 
 docker pushrm lakruzz/lamj

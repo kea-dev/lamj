@@ -16,6 +16,7 @@
 # * Basic Settings
 #
 user            = mysql
+# The following six settings are not enabled in the default installation configurations
 pid-file        = /var/run/mysqld/mysqld.pid
 socket          = /var/run/mysqld/mysqld.sock
 port            = 3306
@@ -23,12 +24,16 @@ datadir         = /var/lib/mysql
 skip-host-cache
 skip-name-resolve
 
-# If MySQL is running as a replication slave, this should be
+# LAMJ: If MySQL is running as a replication slave, this should be
 # changed. Ref https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_tmpdir
 # tmpdir                = /tmp
 #
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
+# bind-address            = 127.0.0.1
+
+#LAMJ: The instalation default is to only listen on 127.0.0.1. changing it to 0.0.0.0 makes the 
+# database service available to the entire world. Not very secure, but quite useful for our purpose.
 bind-address            = 0.0.0.0
 # mysqlx-bind-address   = 0.0.0.0
 #

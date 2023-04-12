@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 service mysql start 
 sleep 3
 
@@ -21,5 +22,4 @@ fi
 
 echo
 echo " * Set password on 'root'@'localhost'"
-# mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;FLUSH PRIVILEGES;"
 mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$MYSQL_ROOT_PASSWORD';FLUSH PRIVILEGES;"   
