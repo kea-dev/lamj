@@ -33,7 +33,7 @@ RUN mkdir -p /var/lib/mysql && \
     usermod -d /var/lib/mysql/ mysql
 RUN useradd --no-log-init -r -g staff vscode
 
-RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/mysql.conf.d/installationde-faults.mysqld.cnf
+RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/mysql.conf.d/installation-deaults.mysqld.cnf
 COPY mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 
 RUN mkdir /docker-entrypoint-initdb.d || true
